@@ -9,21 +9,36 @@ import android.media.audiofx.AudioEffect
 import org.lunaris.dolby.DolbyConstants
 import org.lunaris.dolby.DolbyConstants.DsParam
 import java.util.UUID
+import android.util.Log
 
 class DolbyAudioEffect(priority: Int, audioSession: Int) : AudioEffect(
     EFFECT_TYPE_NULL, EFFECT_TYPE_DAP, priority, audioSession
 ) {
 
+    init {
+        Log.d(TAG, "DolbyAudioEffect created with priority=$priority, audioSession=$audioSession")
+        // Ensure the effect is enabled by default for global audio session
+        if (audioSession == 0) {
+            enabled = true
+            Log.d(TAG, "Effect enabled for global audio session")
+        }
+    }
+
     var dsOn: Boolean
         get() = getIntParam(EFFECT_PARAM_ENABLE) == 1
         set(value) {
+            Log.d(TAG, "setDsOn: $value")
             setIntParam(EFFECT_PARAM_ENABLE, if (value) 1 else 0)
             enabled = value
+            Log.d(TAG, "AudioEffect.enabled set to: $value")
         }
 
     var profile: Int
-        get() = getIntParam(EFFECT_PARAM_PROFILE)
+        get() = getIntParam(EFFECT_PARAM_PROFILE).also {
+            Log.d(TAG, "getProfile: $it")
+        }
         set(value) {
+            Log.d(TAG, "setProfile: $value")
             setIntParam(EFFECT_PARAM_PROFILE, value)
         }
 
