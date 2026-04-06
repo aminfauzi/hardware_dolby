@@ -69,14 +69,17 @@ PRODUCT_PACKAGES += \
     vendor.dolby.hardware.dms@2.0-impl \
     vendor.dolby.hardware.dms@2.0 \
     vendor.dolby.hardware.dms@2.0-service \
+    vendor.dolby.hardware.dms@2.0-dolby \
     vendor.dolby.media.c2@1.0-service \
     libcodec2_soft_ac4dec \
     libcodec2_soft_ddpdec \
     libcodec2_soft_dolby \
     libcodec2_store_dolby \
+    libdapparamstorage-dolby \
     libdapparamstorage \
     libdeccfg \
     libdlbdsservice \
+    libstagefright_foundation-dolby \
     libdlbpreg \
     libspatializerparamstorage \
     libdlbvol \
